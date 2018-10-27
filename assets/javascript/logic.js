@@ -18,6 +18,8 @@ $(document).ready(function() {
                 console.log(response);
                 var results = response.data;
 
+                $("#gif-div").empty();
+
                 for (var i = 0; i < results.length; i++) {
                     var ballerDiv = $("<div>");
                     var p = $("<p>").text("Rating: " + results[i].rating);
@@ -27,8 +29,8 @@ $(document).ready(function() {
                     ballerGIF.attr("data-animate", results[i].images.fixed_height.url)
                     ballerGIF.attr("data-state", "still")
                     ballerGIF.addClass("gif");
-                    ballerDiv.append(p);
                     ballerDiv.append(ballerGIF);
+                    ballerDiv.append(p);
                     console.log(ballerGIF);
                     $("#gif-div").prepend(ballerDiv);
                 }
@@ -39,10 +41,10 @@ $(document).ready(function() {
                     if (state === "still") {
                         $(this).attr("src", $(this).attr("data-animate"));
                         $(this).attr("data-state", "animate");
-                      } else {
+                    } else {
                         $(this).attr("src", $(this).attr("data-still"));
                         $(this).attr("data-state", "still");
-                      }
+                    }
                 });
             });
 
@@ -57,6 +59,7 @@ $(document).ready(function() {
         for (var i = 0; i < ballers.length; i++) {
 
           // Then dynamicaly generating buttons for each movie in the array
+          
           var a = $("<button>");
           a.addClass("baller-btn");
           // Adding a data-attribute
@@ -74,10 +77,12 @@ $(document).ready(function() {
         var baller = $("#baller-input").val().trim();
     
         // Adding baller name from the textbox to our array
+        //if (baller.val()  != String) {
         ballers.push(baller);
     
         // Calling renderButtons
         renderButtons();
+       // }
     });
     
     $(document).on("click", ".baller-btn", displayBallerGif);

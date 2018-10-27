@@ -10,3 +10,15 @@
 #baller-input {
     width: 200px;
 }
+
+.gif {
+    max-width: 250px;
+}
+
+#gif-div {
+    margin: 50px;
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    grid-column-gap: 75px;
+    grid-row-gap: 75px;
+}
